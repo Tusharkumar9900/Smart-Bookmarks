@@ -197,8 +197,9 @@ export function BookmarkApp() {
 
   async function handleAddBookmark(e: React.FormEvent) {
     e.preventDefault();
-    if (!user) return;
+    if (!user?.id) return;
   
+    const userId = user.id;
     if (!url.trim()) {
       setError("Please enter a URL.");
       return;
@@ -210,7 +211,7 @@ export function BookmarkApp() {
     // 🔥 Create temporary optimistic bookmark
     const tempBookmark: Bookmark = {
       id: crypto.randomUUID(),
-      user_id: user.id,
+      user_id: userId,
       url: url.trim(),
       title: title.trim() || url.trim(),
       created_at: new Date().toISOString(),
@@ -225,7 +226,7 @@ export function BookmarkApp() {
     const { error: insertError } = await supabase
       .from("bookmarks")
       .insert({
-        user_id: user.id,
+        user_id: userId,
         url: tempBookmark.url,
         title: tempBookmark.title,
       });
