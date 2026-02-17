@@ -525,7 +525,7 @@ export function BookmarkApp() {
                     </div>
                     <Button
                       variant="ghost"
-                      size="icon-sm"
+                      size="sm"
                       onClick={() => handleDeleteBookmark(bookmark.id)}
                       aria-label="Delete bookmark"
                     >
