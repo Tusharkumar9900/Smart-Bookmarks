@@ -106,14 +106,14 @@ export function BookmarkApp() {
     loadBookmarks();
 
     const channel = supabase
-      .channel(`bookmarks:${user.id}`)
+      .channel(`bookmarks:${userId}`)
       .on(
         "postgres_changes",
         {
           event: "*",
           schema: "public",
           table: "bookmarks",
-          filter: `user_id=eq.${user.id}`,
+          filter: `user_id=eq.${userId}`,
         },
         (payload) => {
           setBookmarks((current) => {
