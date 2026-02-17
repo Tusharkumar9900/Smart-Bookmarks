@@ -82,7 +82,7 @@ export function BookmarkApp() {
       const { data, error: fetchError } = await supabase
         .from("bookmarks")
         .select("*")
-        .eq("user_id", user.id)
+        .eq("user_id", user!.id)
         .order("created_at", { ascending: false });
 
       if (!isMounted) return;
