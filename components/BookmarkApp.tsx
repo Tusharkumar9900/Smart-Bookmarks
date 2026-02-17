@@ -67,11 +67,19 @@ export function BookmarkApp() {
   }, []);
 
   // 2. Load bookmarks from DB + 4. Realtime: subscribe so other tabs update
+  // useEffect(() => {
+  //   if (!user) {
+  //     setBookmarks([]);
+  //     return;
+  //   }
+
   useEffect(() => {
-    if (!user) {
+    if (!user?.id) {
       setBookmarks([]);
       return;
     }
+  
+    const userId = user.id;
     
 
     let isMounted = true;
@@ -82,7 +90,7 @@ export function BookmarkApp() {
       const { data, error: fetchError } = await supabase
         .from("bookmarks")
         .select("*")
-        .eq("user_id", user!.id)
+        .eq("user_id", userId)
         .order("created_at", { ascending: false });
 
       if (!isMounted) return;
