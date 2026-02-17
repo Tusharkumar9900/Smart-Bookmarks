@@ -835,14 +835,19 @@ export function BookmarkApp() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-4 py-10 text-foreground">
-      <Card className="w-full max-w-3xl border border-white/10 bg-card/90 shadow-2xl shadow-emerald-500/20 backdrop-blur-xl">
-        <CardHeader className="flex flex-row items-start justify-between gap-4 pb-4">
+   // <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-4 py-10 text-foreground">
+  //  <div className="min-h-screen bg-slate-950 px-6 py-12">
+ <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-slate-200 to-emerald-100 px-6 py-12">
+ <div className="mx-auto max-w-4xl space-y-8">
+
+
+    <Card className="w-full rounded-3xl max-w-3xl border border-white/10 bg-card/90 shadow-2xl shadow-emerald-500/20 backdrop-blur-xl">
+        <CardHeader className="flex flex-row items-center justify-between  pb-6">
           <div>
-            <CardTitle className="text-xl font-semibold text-slate-50">
+            <CardTitle className="text-3xl font-bold tracking-tight bg-gradient-to-r from-emerald-400 to-blue-400 text-transparent bg-clip-text">
               Smart Bookmark App
             </CardTitle>
-            <CardDescription className="text-base text-slate-200">
+            <CardDescription className="mt-2 text-sm text-slate-600 leading-relaxed">
               Save links you care about. Your bookmarks are private and update
               in real time across tabs.
             </CardDescription>
@@ -852,9 +857,10 @@ export function BookmarkApp() {
             variant="outline"
             size="sm"
             onClick={handleSignOut}
-            className="shrink-0 gap-2 border-white/20 text-slate-200 hover:bg-white/10"
+            // className="shrink-0 gap-2 border-white/20 text-slate-200 hover:bg-white/20"
+            className="bg-slate-800 text-white hover:bg-red-700 border border-white/10"
           >
-            <LogOut className="h-4 w-4" />
+            <LogOut className="h-4 w-4 mr-2" />
             Sign out
           </Button>
         </CardHeader>
@@ -903,9 +909,9 @@ export function BookmarkApp() {
           </form>
 
           <div className="space-y-3">
-            <div className="flex items-center justify-between text-sm font-medium text-slate-100">
+            <div className="flex items-center justify-between rounded-xl border-white/10 ">
               <span>Saved bookmarks</span>
-              <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-xs text-emerald-200">
+              <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs text-emerald-400">
                 {loadingBookmarks ? "…" : `${bookmarks.length} saved`}
               </span>
             </div>
@@ -929,11 +935,11 @@ export function BookmarkApp() {
                         href={bookmark.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="truncate text-sm font-medium text-primary underline-offset-2 hover:underline"
-                      >
+                         className="truncate text-sm font-medium text-primary underline-offset-2 hover:underline"
+                     >
                         {bookmark.title || bookmark.url}
                       </a>
-                      <p className="truncate text-xs text-slate-400">
+                      <p className="mt-2 rounded-lg px-3 py-1 bg-emrald-500/5 text-sm font-medium text-emarald-400 break-all backdrop-blur-md">
                         {bookmark.url}
                       </p>
                     </div>
@@ -952,6 +958,7 @@ export function BookmarkApp() {
           </div>
         </CardContent>
       </Card>
+    </div>
     </div>
   );
 }
